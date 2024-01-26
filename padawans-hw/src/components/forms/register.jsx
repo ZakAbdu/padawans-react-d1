@@ -5,6 +5,18 @@ export default function Register() {
 
     const [user, setUser] = useState({username: '', email: '', password: ''})
 
+    async function registerUser() {
+        const res = await fetch('http://127.0.0.1:5000', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
+        })
+        if (res.ok) {
+            const data = res.json()
+            console.log(data)
+        }
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -23,7 +35,7 @@ export default function Register() {
                 <input type="email" name="email" value={user.email} onChange={(e) => setUser({...user, email: e.target.value })}/> <br />
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={user.password} onChange={(e) => setUser({...user, password: e.target.value })}/> <br />
-                <input type="submit" />
+                <input type="submit" value={'Register'}/>
             </form>
         </>
     )

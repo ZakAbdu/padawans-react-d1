@@ -5,12 +5,12 @@ import SideBar from "./SideBar"
 import { Movies } from "./movies"
 
 
-export default function Body({ children }) {
+export default function Body({ sidebar, children }) {
 
     return (
         <Container>
             <Stack direction='horizontal'>
-                <SideBar />
+                { sidebar && <SideBar />}
                 <Container>
                     { children }
                 </Container>
