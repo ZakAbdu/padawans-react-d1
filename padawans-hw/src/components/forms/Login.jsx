@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export default function Login() {
+export default function Login({updateUser}) {
 
     const [user, setUser] = useState({username: '', password: ''})
     const [ isLogging, setIsLogging ] = useState(false)
@@ -21,6 +21,7 @@ export default function Login() {
         if (res.ok) {
             const data = await res.json()
             console.log(data)
+            updateUser({ token: data.token, username: user.username, password: user.password })
         }
         setIsLogging(false)
     }
