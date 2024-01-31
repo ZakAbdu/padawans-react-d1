@@ -6,7 +6,7 @@ export default function Register() {
     const [user, setUser] = useState({username: '', email: '', password: ''})
 
     async function registerUser() {
-        const res = await fetch('http://127.0.0.1:5000', {
+        const res = await fetch('https://padawanz-flask-app.onrender.com/user', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(user)
@@ -20,6 +20,7 @@ export default function Register() {
 
     function handleSubmit(e) {
         e.preventDefault()
+        registerUser()
         console.log(user)
         setUser({username: '', email: '', password: ''})
     }

@@ -1,61 +1,21 @@
-import Movie from "./Movie"
+import { useState } from "react"
+import Movie from "./movie"
 
 export const Movies = () => {
 
-    const movies = [
-        {
-        "title": "Django Unchained",
-        "id": "1",
-        "director": "Quentin Tarantino",
-        "year": "2014",
-        "user": {
-            "email": "dsmith232@gmail.com",
-            "first_name": null,
-            "id": "1",
-            "last_name": null,
-            "username": "dsmith232"
+    const [movies, setMovies] = useState([])
+
+    useState (() => {
+        (async () => {
+            const res = await fetch('https://padawanz-flask-app.onrender.com/movie/')
+            if (res.ok) {
+                const data = await res.json()
+                setMovies(data);
+                return
             }
-        },
-        {
-          "title": "Up",
-          "id": "2",
-          "director": "SomeDisneyGuy",
-          "year": "2008",
-          "user": {
-            "email": "zak2@gmail.com",
-            "first_name": null,
-            "id": "2",
-            "last_name": null,
-            "username": "Zakkkk"
-            }
-        },
-        {
-          "title": "Pulp Fiction",
-          "id": "3",
-          "director": "Quentin Tarantino",
-          "year": "2000",
-          "user": {
-            "email": "parker@gmail.com",
-            "first_name": null,
-            "id": "3",
-            "last_name": null,
-            "username": "Parkerrr"
-            }
-        },
-        {
-          "title": "Inception",
-          "id": "4",
-          "director": "Chirs Nolan",
-          "year": "2012",
-          "user": {
-            "email": "Mike@gmail.com",
-            "first_name": null,
-            "id": "4",
-            "last_name": null,
-            "username": "Mikeee"
-            }
-        }
-    ]
+            console.error('failed to get movie')
+        }) ()
+    }, [])
 
     return (
         <>
@@ -65,5 +25,18 @@ export const Movies = () => {
             }) : <p>No Movies to Display</p> }
         </>
     )
+
+   
+    //       "title": "Inception",
+    //       "id": "4",
+    //       "director": "Chirs Nolan",
+    //       "year": "2012",
+    //       "user": {
+    //         "email": "Mike@gmail.com",
+    //         "first_name": null,
+    //         "id": "4",
+    //         "last_name": null,
+    //         "username": "Mikeee"
+
 
 }

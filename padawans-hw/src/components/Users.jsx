@@ -7,7 +7,7 @@ export default function Users() {
 
     useEffect(() => {
        (async () => {
-            const res = await fetch('http://127.0.0.1:5000/user')
+            const res = await fetch('https://padawanz-flask-app.onrender.com/user')
             if (res.ok) {
                 const data = await res.json()
                 console.log(data)

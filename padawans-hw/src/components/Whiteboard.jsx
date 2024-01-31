@@ -27,7 +27,7 @@ export default function Whiteboard() {
 
     return (
         <Container>
-            <h3>Today's Whiteboard</h3>
+            <h3>Today's Whiteboardddddd</h3>
             <p>Student: {performingStudent}</p>
             <button onClick={randomStudent}>Spin The Wheel</button>
         </Container>

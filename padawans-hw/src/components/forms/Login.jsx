@@ -1,10 +1,10 @@
 import { useState } from "react"
 
-
 export default function Login({updateUser}) {
 
     const [user, setUser] = useState({username: '', password: ''})
     const [ isLogging, setIsLogging ] = useState(false)
+
 
     if (isLogging) {
         LoginUser()
@@ -13,7 +13,7 @@ export default function Login({updateUser}) {
     async function LoginUser() {
         console.log(user, 'from logggggg')
 
-        const res = await fetch('http://127.0.0.1:5000/login', {
+        const res = await fetch('https://padawanz-flask-app.onrender.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
