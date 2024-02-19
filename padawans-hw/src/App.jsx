@@ -10,35 +10,31 @@ import LandingPage from './pages/LandingPage'
 import Login from './components/forms/Login'
 import { Movies } from './components/movies'
 import MoviePost from './components/forms/MoviePost'
+import { ToastContainer } from 'react-toastify'
 
 import { Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import UserPage from './pages/UserPage'
+import Logout from './components/logout'
 
 
 export default function App() {
 
-  const [user, setUser] = useState({username: '', password: '', token: ''})
-  console.log(user)
-
-  function updateUser({ username, password, token }){
-    setUser({ username, password, token })
-  }
-
+  
   return (
     <Container fluid data-bs-theme='dark' className='app'>
       <Header />
-      <MoviePost user={user} />
-
+      <MoviePost />
       <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/login' element={<FormPage> <Login user={user} updateUser={updateUser} /> </FormPage>} />
+        <Route path='/' element={<LandingPage> <Whiteboard /> </LandingPage>} />
+        <Route path='/login' element={<FormPage> <Login /> </FormPage>} />
         <Route path='/register' element={<FormPage> <Register /> </FormPage>} />
         <Route path='/users' element={<SocialPage> <Users /> </SocialPage>} />
         <Route path='/movies' element={<SocialPage> <Movies /> </SocialPage>} />
-        <Route path='/movie/:username' element={<UserPage />} />
+        <Route path='/user/:username' element={<UserPage />} />
+        <Route path='/logout' element={<Logout/>} />
       </Routes>
-
+      <ToastContainer />
     </Container>
   )
 }

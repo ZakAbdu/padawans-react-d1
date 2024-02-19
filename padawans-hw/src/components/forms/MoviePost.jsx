@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
-export default function MoviePost({user}) {
+export default function MoviePost() {
 
     const titleInputRef = useRef(null)
     const yearInputRef = useRef(null)
     const directorInputRef = useRef(null)
+    const { user } = useContext(UserContext)
 
     async function sendMovie( movieData ) {
         const res = await fetch('https://padawanz-flask-app.onrender.com/movie/', {
